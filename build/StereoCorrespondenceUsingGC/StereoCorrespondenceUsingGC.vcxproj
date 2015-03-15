@@ -41,7 +41,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(PROJECTPATH)\opencv248\build\include;$(PROJECTPATH)\opencv248\build\include\opencv\;$(PROJECTPATH)\opencv248\build\include\opencv2\;%(AdditionalIncludeDirectories);$(PROJECTPATH)\GraphCut\inc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PROJECTPATH)\opencv248\build\include;$(PROJECTPATH)\opencv248\build\include\opencv\;$(PROJECTPATH)\opencv248\build\include\opencv2\;%(AdditionalIncludeDirectories);$(PROJECTPATH)\StereoCorrespondenceGC\inc\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions); _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -57,15 +57,16 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(PROJECTPATH)\opencv248\build\include;$(PROJECTPATH)\opencv248\build\include\opencv\;$(PROJECTPATH)\opencv248\build\include\opencv2\;%(AdditionalIncludeDirectories);$(PROJECTPATH)\GraphCut\inc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PROJECTPATH)\opencv248\build\include;$(PROJECTPATH)\opencv248\build\include\opencv\;$(PROJECTPATH)\opencv248\build\include\opencv2\;%(AdditionalIncludeDirectories);$(PROJECTPATH)\StereoCorrespondenceGC\inc\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opencv_calib3d248.lib;opencv_contrib248.lib;opencv_core248.lib;opencv_highgui248.lib;opencv_features2d248.lib;opencv_flann248.lib;opencv_imgproc248.lib;opencv_ml248.lib;opencv_video248.lib;opencv_legacy248.lib;opencv_objdetect248.lib;opencv_photo248.lib;opencv_gpu248.lib;opencv_ocl248.lib;opencv_nonfree248.lib;opencv_stitching248.lib;opencv_videostab248.lib;opencv_ts248.lib;opencv_superres248.lib;libjpeg.lib;libjasper.lib;libtiff.lib;libpng.lib;IlmImf.lib;zlib.lib;Gdi32.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(PROJECT_PATH)\opencv248\build\x86\vc10\staticlib\; $(PROJECT_PATH)\opencv248\build\x86\vc10\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(PROJECTPATH)\opencv248\build\x86\vc10\staticlib\; $(PROJECTPATH)\opencv248\build\x86\vc10\lib\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

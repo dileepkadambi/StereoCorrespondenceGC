@@ -16,8 +16,8 @@ int main()
 {
 	char srcLeftPathComplete[500], srcRightPathComplete[500];
 
-	std::string srcLeftPath = "\\GraphCut\\testimages\\scene_left.jpg";
-	std::string srcRightPath = "\\GraphCut\\testimages\\scene_right.jpg";
+	std::string srcLeftPath = "\\StereoCorrespondenceGC\\testimages\\scene_left.jpg";
+	std::string srcRightPath = "\\StereoCorrespondenceGC\\testimages\\scene_right.jpg";
 
 	Utils objUtils = Utils();
 	objUtils.GetFullPathFromEnv(srcLeftPath.c_str(), srcLeftPathComplete);
@@ -69,7 +69,9 @@ int main()
 
 		cvShowImage("win3",disparity_left_visual); 
 		
-		if(cvWaitKey(20)==27) 
+		std::cout << "Close Window when finished viewing" << std::endl;
+
+		if(cvWaitKey(-10)==27) 
 			break;
 
 	}
