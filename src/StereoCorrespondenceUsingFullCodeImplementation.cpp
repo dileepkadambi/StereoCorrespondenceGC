@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <utils.h>
+#include <timer.h>
 
 using namespace cv;
 using namespace std;
@@ -22,9 +23,11 @@ int main()
 	Utils objUtils = Utils();
 	objUtils.GetFullPathFromEnv(srcLeftPath.c_str(), srcLeftPathComplete);
 	objUtils.GetFullPathFromEnv(srcRightPath.c_str(), srcRightPathComplete);
-
+	Timer objTimer = Timer();
 	//IplImage* srcLeft = cvLoadImage("C:/Users/Ajinkya/Documents/B Tech Project/trialimages/scene_left.jpg",1);
 	//IplImage* srcRight = cvLoadImage("C:/Users/Ajinkya/Documents/B Tech Project/trialimages/scene_right.jpg",1);
+	
+	objTimer.StartTimer();
 
 	IplImage* srcLeft = cvLoadImage(srcLeftPathComplete,1);
 	IplImage* srcRight = cvLoadImage(srcRightPathComplete,1);
@@ -56,9 +59,14 @@ int main()
 	cvConvertScale( disparity_left, disparity_left_visual, -16 );
 
 	cvSaveImage("disparity.jpg", disparity_left_visual);
+	
+	float timeTaken = objTimer.GetElapsedTimeInSeconds();
+
+	std::cout<< "**** The total Time taken in Seconds is **** = " << timeTaken << std::endl;
+
 	cvNamedWindow("win1",1);
 	cvNamedWindow("win2",1);
-
+	 
 	cvNamedWindow("win3",1); 
 	
 	for(;;)
