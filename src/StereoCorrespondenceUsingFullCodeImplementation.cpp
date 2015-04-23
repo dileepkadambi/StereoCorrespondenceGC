@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <utils.h>
-#include <timer.h>
+#include "PushRelabel.h"
 
 using namespace cv;
 using namespace std;
@@ -23,11 +23,9 @@ int main()
 	Utils objUtils = Utils();
 	objUtils.GetFullPathFromEnv(srcLeftPath.c_str(), srcLeftPathComplete);
 	objUtils.GetFullPathFromEnv(srcRightPath.c_str(), srcRightPathComplete);
-	Timer objTimer = Timer();
+
 	//IplImage* srcLeft = cvLoadImage("C:/Users/Ajinkya/Documents/B Tech Project/trialimages/scene_left.jpg",1);
 	//IplImage* srcRight = cvLoadImage("C:/Users/Ajinkya/Documents/B Tech Project/trialimages/scene_right.jpg",1);
-	
-	objTimer.StartTimer();
 
 	IplImage* srcLeft = cvLoadImage(srcLeftPathComplete,1);
 	IplImage* srcRight = cvLoadImage(srcRightPathComplete,1);
@@ -42,15 +40,15 @@ int main()
 
 	CvSize size = cvGetSize(srcLeft);
 
-	CvMat* disparity_left = cvCreateMat( size.height, size.width, CV_16S );
+	CvMat* disparity_left = cvCreateMat( size.height, size.width, CV_8S );
 
-	CvMat* disparity_right = cvCreateMat( size.height, size.width, CV_16S );
+	CvMat* disparity_right = cvCreateMat( size.height, size.width, CV_8S );
 
+	PushRelabel *prLabel = new PushRelabel(size.height*size.width*2);
+	
 	CvStereoGCState* state = cvCreateStereoGCState( 16, 2 );
 
-	cvFindStereoCorrespondenceGC( leftImage, rightImage,
-
-	disparity_left, disparity_right, state, 0 );
+	cvFindStereoCorrespondenceGC( leftImage, rightImage, disparity_left, disparity_right, state, 0 );
 
 	cvReleaseStereoGCState( &state );
 
@@ -59,14 +57,9 @@ int main()
 	cvConvertScale( disparity_left, disparity_left_visual, -16 );
 
 	cvSaveImage("disparity.jpg", disparity_left_visual);
-	
-	float timeTaken = objTimer.GetElapsedTimeInSeconds();
-
-	std::cout<< "**** The total Time taken in Seconds is **** = " << timeTaken << std::endl;
-
 	cvNamedWindow("win1",1);
 	cvNamedWindow("win2",1);
-	 
+
 	cvNamedWindow("win3",1); 
 	
 	for(;;)
